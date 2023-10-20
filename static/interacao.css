@@ -1,0 +1,60 @@
+@media screen and (max-width: 500px) {
+
+    #titulo-interacao {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #titulo-interacao i {
+        margin-right: 50px;
+    }
+
+    #titulo-interacao h3 {
+        margin-right: 50px;
+    }
+
+    #interacao {
+        margin-top: 50px;
+    }
+
+    #opcoes {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #emocao {
+        margin-bottom: 30px;
+        transition: transform 0.3s;
+    }
+
+    #emocao:hover {
+        transform: scale(1.10);
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 50px;
+        border-radius: 20px;
+    }
+
+    #emocao img {
+        width: 64px;
+    }
+
+    
+
+    #emocao h6 {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    #emocao button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 12px;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+
+}

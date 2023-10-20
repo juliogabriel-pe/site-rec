@@ -1,0 +1,46 @@
+@media screen and (max-width: 500px) {
+  body{
+    margin: 0 30px 0 30px
+  }
+  .card-section{
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .row{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px; 
+    justify-content: space-between;  
+  }
+  .card + .card {
+    margin-left: 30px; /* Adiciona margem à esquerda dos cartões, exceto o primeiro */
+  }
+
+  .card{
+    padding:5px ;
+    width: 120px;
+    height: 253px; 
+    margin-right: 30px;
+    border: 1px solid #ffffff;
+  }
+  .card:last-child {
+    margin-right: 0; /* Remove a margem do último cartão */
+  }
+ 
+ 
+  .card img{
+    height: 200px;
+    width: 65px;
+  }
+
+  .titlle-look{
+
+    font-size: 14px;
+    text-align: center;
+    line-height: 2;
+  }
+}

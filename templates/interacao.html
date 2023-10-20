@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe Desfile Maker</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/interacao.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div id="titulo-interacao">
+        <a href="index.html"><i class="fas fa-angle-left" href="../templates/index.
+            html"></i></a>
+        <h3>Interaja</h3>
+    </div>
+
+    <div id="interacao">
+        <h3>O que você achou dessa roupa?</h3>
+        <div id="opcoes">
+            <div id="emocao">
+                <img src="../static/apaixonado.png" alt="">
+                <h6>Amei</h6>
+                <h6>Contador de Voto: <span id="contador-votos-id-1">0</span></h6>
+                <button onclick="votar(1)">Votar</button>
+            </div>
+            <div id="emocao">
+                <img src="../static/poker-face.png" alt="">
+                <h6>Não sei dizer</h6>
+                <h6>Contador de Voto: <span id="contador-votos-id-2">0</span></h6>
+                <button onclick="votar(2)">Votar</button>
+            </div>
+            <div id="emocao">
+                <img src="../static/suspeito.png" alt="">
+                <h6>Não sou muito fã</h6>
+                <h6>Contador de Voto: <span id="contador-votos-id-3">0</span></h6>
+                <button onclick="votar(3)">Votar</button>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+
+    <div class="footer">
+        <div class="redessociais">
+            <ul>
+                <li><i class="fab fa-facebook"></i></li>
+                <li><i class="fab fa-twitter"></i></li>
+                <li><i class="fab fa-instagram"></i></li>
+            </ul>
+        </div>
+        <p>2023 Todos os direitos reservados - <strong>Faculdade Senac</strong></p>
+    </div>
+
+    <script>
+        // Função para enviar votos para a rota /votar
+        async function votar(opcaoId) {
+            const response = await fetch("/votar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ opcao_id: opcaoId }),
+            });
+
+            const data = await response.json();
+            if (data.mensagem === "Voto registrado com sucesso!") {
+                // Atualize o contador de votos após o voto ser registrado
+                atualizarContadorVotos();
+            }
+        }
+
+        // Use JavaScript para buscar o contador de votos de cada opção
+        async function atualizarContadorVotos() {
+            for (let i = 1; i <= 3; i++) {
+                const response = await fetch(`/contador_votos/${i}`);
+                const data = await response.json();
+                document.getElementById(`contador-votos-id-${i}`).textContent = data.contador_votos;
+            }
+        }
+
+        // Atualize o contador de votos assim que a página for carregada
+        atualizarContadorVotos();
+    </script>
+</body>
+
+</html>
